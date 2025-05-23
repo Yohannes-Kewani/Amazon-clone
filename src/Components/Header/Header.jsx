@@ -1,4 +1,5 @@
 import React from "react";
+import Lower_header from "./Lower_header";
 import { IoIosSearch } from "react-icons/io";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
@@ -71,7 +72,9 @@ function Header() {
           </div>
         </div>
       </section>
+      <Lower_header/>
     </section>
+    
   );
 }
 
