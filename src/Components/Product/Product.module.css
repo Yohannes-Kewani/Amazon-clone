@@ -52,3 +52,33 @@ left: 0;
 .products_container section{
     margin: 0 auto;
 }
+.product_flexer{
+    box-shadow: none;
+    height: auto;
+    display: flex;
+    gap: 50px;
+    width: 100%;
+}
+.product_flexer h3{
+    padding: 20px 0;
+}
+.product_flexer button{
+    display: block;
+    position: static;
+    width: 150px;
+    margin-right: 40px;
+}
+.product_flexer{
+    height: 50vh;
+}
+.product_flexer img{
+    width: 300px !important;
+    height: auto;
+}
+@media screen and (max-width: 768px){
+    .product_flexer{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
