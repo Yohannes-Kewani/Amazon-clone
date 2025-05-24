@@ -1,17 +1,12 @@
 import React from "react";
-import Header from "./Components/Header/Header.jsx";
+
 import "./App.css";
-import Carousel from "./Components/Carousel/CarouselEffect.jsx";
-import Category from "./Components/Catagory/Category.jsx";
-import Product from "./Components/Product/Product.jsx";
 import "./index.css";
+import Routing from "./Routing.jsx";
 function App() {
   return (
     <>
-      <Header />
-      <Carousel />
-      <Category />
-      <Product />
+      <Routing/>
     </>
   );
 }
