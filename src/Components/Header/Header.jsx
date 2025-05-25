@@ -10,7 +10,7 @@ import { DataContext } from "../DataProvider/DataProvider";
 function Header() {
   const [{basket}, dispatch]=useContext(DataContext)
   return (
-    <section>
+    <section className={classes.fixed}>
       <section className={classes.header_container}>
         <div className={classes.logo_container}>
           {/* Logo */}
