@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Lower_header from "./Lower_header";
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import classes from "./Header.module.css";
+import { DataContext } from "../DataProvider/DataProvider";
 
 function Header() {
+  const [{basket}, dispatch]=useContext(DataContext)
   return (
     <section>
       <section className={classes.header_container}>
@@ -68,7 +70,7 @@ function Header() {
             <Link to="/cart" className={classes.cart}>
               <CiShoppingCart size={32} />
               {/* icon */}
-              <span>0</span>
+              <span>{basket.length}</span>
             </Link>
           </div>
         </div>
