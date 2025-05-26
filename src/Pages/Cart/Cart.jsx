@@ -5,12 +5,23 @@ import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import {Link} from 'react-router-dom'
 import classes from './Cart.module.css'
+import { type } from "../../Utilities/action.type";
+import { IoIosArrowUp } from "react-icons/io";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
+
 
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
 const total =basket.reduce((amount,item)=>{
-  return item.price + amount},0)
+  return item.price * item.amount + amount},0)
+  const increment =(item)=>{
+    dispatch({type: type.ADD_TO_BASKET,item})
+  }
+  const decrement =(id)=>{
+    dispatch({type: type.REMOVE_FROM_BASKET,id})
+  }
   return (
     <Layout>
       <section className={classes.container}>
@@ -23,13 +34,35 @@ const total =basket.reduce((amount,item)=>{
             <p>Oops! No item in your cart</p>
           ) : (
             basket.map((item, i) => (
-              <ProductCard
-                key={i}
-                product={item}
-                renderDesc={true}
-                flex={true}
-                renderAdd={false}
-              />
+              <section className={classes.cart_product}>
+                <ProductCard
+                  key={i}
+                  product={item}
+                  renderDesc={true}
+                  flex={true}
+                  renderAdd={false}
+                />
+                <div className={classes.button_container}>
+                  <button
+                    className={classes.btn}
+                    onClick={() => {
+                      increment(item);
+                    }}
+                  >
+                    <IoIosArrowUp />
+                  </button>
+                  <span>{item.amount}</span>
+                  <button
+                    className={classes.btn}
+                    onClick={() => {
+                      decrement(item.id);
+                    }}
+                  >
+                    <MdKeyboardArrowDown />
+                  
+                  </button>
+                </div>
+              </section>
             ))
           )}
         </div>
