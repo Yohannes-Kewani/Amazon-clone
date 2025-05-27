@@ -3,6 +3,7 @@ import react, { useReducer } from "react";
 
 export const initialState = {
   basket: [],
+  user:null
 };
 
 export const reducer = (state, action) => {
@@ -43,7 +44,10 @@ return{
     basket: newBasket
 }
       
-
+case type.SET_USER:
+  return{
+    ...state,user: action.user
+  }
     default:
       return state;
   }
