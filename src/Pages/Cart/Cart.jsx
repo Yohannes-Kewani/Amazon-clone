@@ -69,7 +69,7 @@ const total =basket.reduce((amount,item)=>{
         {basket?.length !== 0 && (
           <div className={classes.subtotal}>
             <div>
-              <p>The subtotal the {basket?.length} items is:</p>
+              <p>The subtotal for the {basket?.length} items is:</p>
               <CurrencyFormat amount={total} />
             </div>{" "}
             <span>

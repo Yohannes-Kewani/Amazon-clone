@@ -7,13 +7,13 @@ function CarouselEffect() {
   return (
     <div>
       <Carousel
-        autoplay={true}
+        autoPlay={true}
         infiniteLoop={true}
         showIndicators={false}
         showThumbs={false}
       >
-        {img.map((imageItemLink) => {
-          return <img src={imageItemLink} />;
+        {img.map((imageItemLink,i) => {
+          return <img src={imageItemLink} key={i}/>;
         })}
       </Carousel>
       <div className={classes.hero_img}></div>
