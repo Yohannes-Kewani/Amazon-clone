@@ -6,9 +6,10 @@ import { CiShoppingCart } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import classes from "./Header.module.css";
 import { DataContext } from "../DataProvider/DataProvider";
+import {auth} from "../../Utilities/firebase"
 
 function Header() {
-  const [{basket}, dispatch]=useContext(DataContext)
+  const [{user, basket}, dispatch]=useContext(DataContext)
   const totalItem=basket.reduce((amount, item)=>{
     return item.amount+amount
   },0)
@@ -58,11 +59,22 @@ function Header() {
               </select>
             </Link>
             {/* three components */}
-            <Link to="/auth">
-              <div>
-                <p>sign in</p>
-                <span>Account & lists</span>
-              </div>
+            <Link to={!user && "/auth"}>
+             
+                <div>
+                  {user ? (
+                    <>
+                      <p>hello, {user?.email.split("@")[0]}</p>
+                      <span onClick={()=>auth.signOut()}>Sign out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p>sign in</p>
+                      <span>Account & lists</span>
+                    </>
+                  )}
+                </div>
+             
             </Link>
             {/* orders */}
             <Link to="/orders">
