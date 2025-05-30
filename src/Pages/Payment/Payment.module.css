@@ -15,10 +15,11 @@
 
 }
 .flex h3{
-    min-width: 300px;
+    min-width: 150px;
 }
 .flex img{
     width: 80px !important;
+    height: auto;
 }
 .flex div{
     height: auto !important;
@@ -53,4 +54,17 @@
  }
  .payment_details button:hover{
     background-color: var(--primary-shade);
+ }
+ @media screen and (max-width: 768px){
+.flex{
+    flex-direction: column;
+}
+ }
+ .Loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgb(52,52,52);
+
  }
