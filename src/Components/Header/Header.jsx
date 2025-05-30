@@ -43,7 +43,7 @@ function Header() {
           </select>
           <input type="text" placeholder="search product" />
           {/* icon */}
-          <IoIosSearch size={25} />
+          <IoIosSearch size={38} />
         </div>
         {/* right side link */}
         <div>
