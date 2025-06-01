@@ -1,5 +1,5 @@
 import axios from "axios";
-const abaseURL: "http://localhost:5000",
+const axiosInstance = axios.create({ 
     baseURL: "https://amazon-api-deploy-xgts.onrender.com/"
  });
 export { axiosInstance };
