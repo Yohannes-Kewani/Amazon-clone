@@ -6,8 +6,9 @@ import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import {Link} from 'react-router-dom'
 import classes from './Cart.module.css'
 import { type } from "../../Utilities/action.type";
-import { IoIosArrowUp } from "react-icons/io";
-import { MdKeyboardArrowDown } from "react-icons/md";
+
+import { BiSolidUpArrow } from "react-icons/bi";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 
 
@@ -49,7 +50,7 @@ const total =basket.reduce((amount,item)=>{
                       increment(item);
                     }}
                   >
-                    <IoIosArrowUp />
+                    <BiSolidUpArrow />
                   </button>
                   <span>{item.amount}</span>
                   <button
@@ -58,8 +59,7 @@ const total =basket.reduce((amount,item)=>{
                       decrement(item.id);
                     }}
                   >
-                    <MdKeyboardArrowDown />
-                  
+                    <BiSolidDownArrow />
                   </button>
                 </div>
               </section>

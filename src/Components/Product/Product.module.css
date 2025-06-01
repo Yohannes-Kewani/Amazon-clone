@@ -1,7 +1,7 @@
 .card_container{
-    width: 250px;
-    box-shadow: 0,0,10px rgba(0,0,0,0.2);
-    padding: 30px;
+    /* width: 300px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
     color: black;
     text-decoration: none;
     position: relative;
@@ -45,12 +45,14 @@ left: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(220px, 1fr));
     max-width: 1150px;
-    margin: 100px auto 100px auto;
-    gap: 10px;
+    margin: 50px auto;
+    gap: 50px;
     justify-items: center;
+    
 }
 .products_container section{
     margin: 0 auto;
+    
 }
 .product_flexer{
     box-shadow: none;

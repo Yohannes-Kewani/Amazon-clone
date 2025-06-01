@@ -14,7 +14,9 @@
     padding: 12px;
 }
 .orders_container img{
-    width: 100% !important;
+    /* width: 100% !important; */
+    width: 100px;
+    height: 150px;
 }
 .orders_container div{
     height: auto !important;
