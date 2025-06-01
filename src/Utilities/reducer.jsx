@@ -3,7 +3,7 @@ import react, { useReducer } from "react";
 
 export const initialState = {
   basket: [],
-  user:null
+  user: null,
 };
 
 export const reducer = (state, action) => {
@@ -29,25 +29,34 @@ export const reducer = (state, action) => {
           basket: updatedBasket,
         };
       }
-        case type.REMOVE_FROM_BASKET:
-            const index=state.basket.findIndex(item=>item.id==action.id)
-let newBasket=[...state.basket]
-if(index>=0){
-if(newBasket[index].amount > 1){
-    newBasket[index]={...newBasket[index], amount:newBasket[index].amount-1}
-}else{
-    newBasket.splice(index,1)
-}
-}
-return{
-    ...state,
-    basket: newBasket
-}
-      
-case type.SET_USER:
-  return{
-    ...state,user: action.user
-  }
+    case type.REMOVE_FROM_BASKET:
+      const index = state.basket.findIndex((item) => item.id == action.id);
+      let newBasket = [...state.basket];
+      if (index >= 0) {
+        if (newBasket[index].amount > 1) {
+          newBasket[index] = {
+            ...newBasket[index],
+            amount: newBasket[index].amount - 1,
+          };
+        } else {
+          newBasket.splice(index, 1);
+        }
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
+      case type.EMPITY_BASKET:
+        return{
+          ...state,
+          basket: [],
+        }
+
+    case type.SET_USER:
+      return {
+        ...state,
+        user: action.user,
+      };
     default:
       return state;
   }

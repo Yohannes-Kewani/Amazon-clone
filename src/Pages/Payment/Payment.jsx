@@ -11,16 +11,16 @@ import { ClipLoader } from "react-spinners";
 import { db } from "../../Utilities/firebase";
 import { useNavigate } from "react-router-dom";
 function Payment() {
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   console.log(user);
   const totalItem = basket.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
   const stripe = useStripe();
   const elements = useElements();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [cardError, setCardError] = useState(null);
-  const [process, setProcess]= useState(false)
+  const [process, setProcess] = useState(false);
   const handleChange = (e) => {
     e?.error?.message ? setCardError(e?.error?.message) : setCardError("");
   };
@@ -30,7 +30,7 @@ function Payment() {
   const handlePayment = async (e) => {
     e.preventDefault();
     //1 backend_contact to the client secret
-    
+
     try {
       setProcess(true);
       const response = await axiosInstance({
@@ -51,20 +51,25 @@ function Payment() {
         }
       );
       // 3 After confirmation order, store in firebase database and clear baske
-      await db.collection("users").doc(user?.uid).collection("orders").doc(paymentIntent?.id).set({
-        basket: basket,
-        amount: paymentIntent.amount,
-        created: paymentIntent.created,
-      })
-      
-      navigate("/orders",{state:{msg: "You have placed new order"}})
+      await db
+        .collection("users")
+        .doc(user?.uid)
+        .collection("orders")
+        .doc(paymentIntent?.id)
+        .set({
+          basket: basket,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created,
+        });
+      // emptying the basket
+      dispatch({ type: type.EMPITY_BASKET });
+
+      navigate("/orders", { state: { msg: "You have placed new order" } });
       setProcess(false);
     } catch (error) {
       console.error("Payment error:", error); // helpful for debugging
-      setProcess(false)
+      setProcess(false);
     }
-
-    
   };
   return (
     <Layout>
@@ -120,7 +125,7 @@ function Payment() {
                   <button type="submit">
                     {process ? (
                       <div className={classes.Loader}>
-                        <ClipLoader color="gray" size={15}/>
+                        <ClipLoader color="gray" size={15} />
                         <p>Please wait ...</p>
                       </div>
                     ) : (
